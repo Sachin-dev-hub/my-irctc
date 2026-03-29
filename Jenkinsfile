@@ -53,4 +53,6 @@ pipeline {                                    // 1  // Defines the start of the 
 
     }                                         // 3  // Ends the stages block
 }                                             // 1  // Ends the pipeline block
-[root@ip-172-31-40-135 my-irctc]# 
+
+
+
