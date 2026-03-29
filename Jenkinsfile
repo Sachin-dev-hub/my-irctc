@@ -2,11 +2,17 @@ pipeline {                                    // 1  // Defines the start of the 
 
     agent any                                 // Specifies the pipeline can run on any available agent
 
-    environment {                             // 2  // Defines environment variables for the pipeline
-        PATH = "/opt/maven/bin:$PATH"         // Adds Maven's path to the system's PATH variable
+    tools {                             // 2  // Defines environment variables for the pipeline
+        maven 'M2_HOME'
+        jdk 'JAVA_HOME'         // Adds Maven's path to the system's PATH variable
     }                                         // 2  // Ends the environment block
 
-    stages {                                  // 3  // Defines the stages block where multiple stages are declared
+    stages {  
+        stage("checkout") {
+            steps {
+                git branch: 'main', url: 'https://github.com/Sachin-dev-hub/my-irctc.git'
+            }
+        }                                // 3  // Defines the stages block where multiple stages are declared
         
         stage("build") {                      // 4  // Creates a stage named 'build'
             steps {                           // 5  // Defines the steps that will be executed in this stage
@@ -47,3 +53,4 @@ pipeline {                                    // 1  // Defines the start of the 
 
     }                                         // 3  // Ends the stages block
 }                                             // 1  // Ends the pipeline block
+[root@ip-172-31-40-135 my-irctc]# 
